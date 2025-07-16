@@ -1,24 +1,33 @@
-:root {
-  --ocre: #d1451e;
-  --coral: #f0633c;
-  --coral-claro: #ffdbd1;
-  --creme: #fffaf3;
-  --verde-escuro: #263a29;
-  --verde-medio: #3d6d4a;
-  --cinza: #444444;
-  --cinza-claro: #efefef;
-  --branco: #fff;
+@import "tailwindcss";
 
-  --font-family-padrao: Nunito Sans, sans-serif;
+@theme {
+  /* Cores */
+
+  --color-ocre: #d1451e;
+  --color-coral: #f0633c;
+  --color-coral-claro: #ffdbd1;
+  --color-creme: #fffaf3;
+  --color-verde-escuro: #263a29;
+  --color-verde-medio: #3d6d4a;
+  --color-cinza: #444444;--color  
+  --color-branco: #fff;
+
+  /* Fontes */
+
+    --font-family-padrao: Nunito Sans, sans-serif;
   --cabecalhos: Paytone One, sans-serif;
 }
 
+@layer base {
 *,
 *::before,
 *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+html{
+  scroll-behavior: smooth;
 }
 
 ul,
@@ -42,146 +51,80 @@ body {
   background: url("../assets/image/fundo-banner.png"),
     var(--verde-escuro, #263a29);
 }
-
-.cabecalho-lg {
-  font-family: var(--cabecalhos);
-  font-size: 3.35625em;
-  line-height: 120%; /* 4.0275em */
 }
-
-.cabecalho {
-  font-family: var(--cabecalhos);
-  font-size: 2.75em;
-  line-height: 120%; /* 3.3em */
-}
-
-.subtitulo-lg {
-  font-size: 1.9375em;
-  line-height: 150%; /* 2.90625em */
-}
-
-.paragrafo-lg {
-  font-size: 1.375em;
-  line-height: 150%; /* 2.90625em */
-}
-
-.paragrafo {
-  font-size: 1.125em;
-  line-height: 150%; /* 1.6875em */
-}
-
-@media only screen and (max-width: 767px) {
+@layer components {
   .cabecalho-lg {
-    font-size: 2.75em;
+    @apply  text-[3.35625em] leading-[120%];
   }
 
   .cabecalho {
-    font-size: 2.3125em;
+    @apply  text-[2.75em] leading-[120%];
   }
 
   .subtitulo-lg {
-    font-size: 1.625em;
+    @apply text-[1.9375em] leading-[150%];
   }
-}
-.banner {
-  padding: 4rem 7.5rem;
-  color: var(--creme);
 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  column-gap: 3.25rem;
-}
+  .paragrafo-lg {
+    @apply text-[1.375em] leading-[150%];
+  }
 
-.logo {
-  height: 4.5rem;
-  margin-bottom: 3rem;
-}
+  .paragrafo {
+    @apply text-[1.125em] leading-[150%];
+  }
 
-.frase-cabecalho {
-  margin-bottom: 2rem;
-}
-
-.texto-verde {
-  color: var(--verde-medio, #3d6d4a);
-}
-
-.foto-banner {
-  width: 35rem;
-}
-
-@media only screen and (max-width: 1300px) {
   .banner {
-    padding: 4rem 3.75rem;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+    @apply px-[7.5rem] py-16 text-creme flex justify-between items-center gap-[3.25rem];
   }
 
   .logo {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-
-@media only screen and (max-width: 767px) {
-  .banner {
-    padding: 4rem 1.5rem;
+    @apply h-[4.5rem] mb-12;
   }
 
-  .foto-banner {
-    width: min(100%, 21.25rem);
-  }
-}
-.banner {
-  padding: 4rem 7.5rem;
-  color: var(--creme);
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  column-gap: 3.25rem;
-}
-
-.logo {
-  height: 4.5rem;
-  margin-bottom: 3rem;
-}
-
-.frase-cabecalho {
-  margin-bottom: 2rem;
-}
-
-.texto-verde {
-  color: var(--verde-medio, #3d6d4a);
-}
-
-.foto-banner {
-  width: 35rem;
-}
-
-@media only screen and (max-width: 1300px) {
-  .banner {
-    padding: 4rem 3.75rem;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+  .frase-cabecalho {
+    @apply mb-8;
   }
 
-  .logo {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-
-@media only screen and (max-width: 767px) {
-  .banner {
-    padding: 4rem 1.5rem;
+  .texto-verde {
+    @apply text-verde-medio;
   }
 
   .foto-banner {
-    width: min(100%, 21.25rem);
+    @apply w-[35rem];
+  }
+}
+
+@layer utilities {
+  /* Responsivo */
+  @media (max-width: 1300px) {
+    .banner {
+      @apply px-[3.75rem] flex-col items-center gap-4;
+    }
+
+    .logo {
+      @apply mx-auto;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .cabecalho-lg {
+      @apply text-[2.75em];
+    }
+
+    .cabecalho {
+      @apply text-[2.3125em];
+    }
+
+    .subtitulo-lg {
+      @apply text-[1.625em];
+    }
+
+    .banner {
+      @apply px-6;
+    }
+
+    .foto-banner {
+      @apply w-full max-w-[21.25rem];
+    }
   }
 }

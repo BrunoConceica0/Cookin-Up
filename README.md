@@ -31,3 +31,6 @@ npm run dev
 ```sh
 npm run build
 ```
+
+##O que é o Vite?
+O Vite consegue disponibilizar um servidor local em poucos segundos, além de atualizar o navegador automaticamente quando salvamos um arquivo do projeto, melhorando bastante a experiência de desenvolvimento.

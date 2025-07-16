@@ -111,9 +111,29 @@ body {
   .lista-vazia {
     @apply flex justify-center items-center flex-wrap gap-[0.25rem] text-center text-coral;
   }
+  .selecionar-ingredientes {
+    @apply flex flex-col text-center;
+  }
+  .titulo-ingredientes{
+    @apply text-verde-medio block  mb-[1.5rem];
+  }
+  .instrucoes{
+    @apply mb-[2rem]
+  }
+  .categorias {
+    @apply flex flex-wrap justify-center gap-[1.5rem] mb-[1rem];
+  }
+  .dica{
+    @apply self-start mb-[3.5rem]
+  }
 }
 
 @layer utilities {
+  /* Sombras */
+    .shadow-sutil {
+    box-shadow: 4px 4px 10px 0px rgba(68, 68, 68, 0.05);
+  }
+  
   /* Responsivo */
   @media (max-width: 1300px) {
     .banner {
@@ -149,6 +169,9 @@ body {
     }
      .conteudo-principal {
       @apply px-[1.5rem] py-[4rem] gap-[4rem];
+    }
+    .dica{
+      @apply mb-[2.5rem]
     }
   }
 }

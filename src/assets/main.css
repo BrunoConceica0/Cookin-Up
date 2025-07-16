@@ -92,6 +92,25 @@ body {
   .foto-banner {
     @apply w-[35rem];
   }
+    .conteudo-principal {
+    @apply px-[7.5rem] py-[6.5rem] rounded-t-[3.75rem] bg-creme text-cinza flex flex-col items-center gap-[5rem];
+  }
+
+  .sua-lista-texto {
+    @apply text-coral block text-center mb-[1.5rem];
+  }
+
+  .ingredientes-sua-lista {
+    @apply flex justify-center flex-wrap gap-y-[1rem] gap-x-[1.5rem];
+  }
+
+  .ingrediente {
+    @apply inline-block rounded-[0.5rem] min-w-[4.25rem] px-2 py-2 text-center transition duration-200 text-creme bg-coral font-bold;
+  }
+
+  .lista-vazia {
+    @apply flex justify-center items-center flex-wrap gap-[0.25rem] text-center text-coral;
+  }
 }
 
 @layer utilities {
@@ -100,9 +119,11 @@ body {
     .banner {
       @apply px-[3.75rem] flex-col items-center gap-4;
     }
-
     .logo {
       @apply mx-auto;
+    }
+      .conteudo-principal {
+      @apply px-[3.75rem] py-[5rem] gap-[3.5rem];
     }
   }
 
@@ -125,6 +146,9 @@ body {
 
     .foto-banner {
       @apply w-full max-w-[21.25rem];
+    }
+     .conteudo-principal {
+      @apply px-[1.5rem] py-[4rem] gap-[4rem];
     }
   }
 }

@@ -1,13 +1,18 @@
 <script lang="ts">
 import SelectionIngredients from "./SelectionIngredients.vue";
+import Tag from "./Tag.vue";
 export default {
   data() {
     return {
-      ingredientes: ["alho", "mantega", "orégano"],
+      ingredientes: [] as string[],
     };
   },
-  components: {
-    SelectionIngredients,
+  components: { SelectionIngredients, Tag },
+  methods: {
+    adicionarIngrediente(ingrediente: string) {
+      console.log(this.ingredientes);
+      this.ingredientes.push(ingrediente);
+    },
   },
 };
 </script>
@@ -17,12 +22,8 @@ export default {
     <section>
       <span class="subtitulo-lg sua-lista-texto"> Sua lista:</span>
       <ul v-if="ingredientes.length > 0" class="ingredientes-sua-lista">
-        <li
-          class="ingrediente capitalize"
-          v-for="(ingrediente, index) in ingredientes"
-          :key="index"
-        >
-          {{ ingrediente }}
+        <li v-for="(ingrediente, index) in ingredientes" :key="index">
+          <Tag :text="ingrediente" :active="true" />
         </li>
       </ul>
       <p v-else class="paragrafo lista-vazia">
@@ -31,6 +32,6 @@ export default {
       </p>
     </section>
 
-    <SelectionIngredients />
+    <SelectionIngredients @add-ingredientes="adicionarIngrediente" />
   </main>
 </template>

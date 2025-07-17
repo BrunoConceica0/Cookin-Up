@@ -1,4 +1,4 @@
-import type ICategories from "@/interface/ICategories";
+import type ICategories from "@/interfaces/ICategories";
 
 export async function getCategories() {
   const res = await fetch(

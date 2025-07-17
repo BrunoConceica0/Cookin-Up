@@ -1,6 +1,8 @@
 <script lang="ts">
-import type ICategories from "@/interface/ICategories";
-import type { PropType } from "vue";
+//@ts-nocheck
+import type ICategories from "@/interfaces/ICategories";
+import Tag from "./Tag.vue";
+import IngredientsSelection from "./IngredientsSelection.vue";
 
 export default {
   props: {
@@ -9,26 +11,33 @@ export default {
 
     categoria: { type: Object as PropType<ICategories>, required: true },
   },
+  components: { Tag, IngredientsSelection },
+  emits: ["add-ingredientes"],
 };
 </script>
 <template>
-  {{ categoria.nome }}
-  {{ categoria.imagem }}
+  <article
+    class="w-[19.5rem] p-[1rem] bg-white h-full flex flex-col items-center gap-[2rem]"
+  >
+    <header class="flex flex-col items-center gap-[0.5rem]">
+      <img
+        class="w-[3.5rem]"
+        :src="`/imagens/icones/categorias_ingredientes/${categoria.imagem}`"
+        alt=""
+      />
+      <h2
+        class="w-[19.5rem] p-[1rem] bg-white h-full flex flex-col items-center gap-[2rem] text-center text-verde-medio font-[700]"
+      >
+        {{ categoria.nome }}
+      </h2>
+    </header>
+    <ul class="flex justify-center gap-[0.5rem] flex-wrap">
+      <li v-for="ingredientes in categoria.ingredientes" :key="ingredientes">
+        <IngredientsSelection
+          :text="ingredientes"
+          @add-ingredientes="$emit('add-ingredientes', $event)"
+        />
+      </li>
+    </ul>
+  </article>
 </template>
-<style scoped>
-.categoria {
-  @apply w-[19.5rem] p-[1rem] bg-branco shadow-sutil h-full flex flex-col items-center gap-[2rem];
-}
-.categoria__cabecalho {
-  @apply flex flex-col items-center gap-[0.5rem];
-}
-.categoria__imagem {
-  @apply w-[3.5rem];
-}
-.categoria__nome {
-  @apply text-center text-verde-medio font-[700];
-}
-.categoria__ingredientes {
-  @apply flex justify-center gap-[0.5rem] flex-wrap;
-}
-</style>

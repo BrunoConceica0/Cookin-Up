@@ -1,5 +1,6 @@
 <script lang="ts">
 import SelectionIngredients from "./SelectionIngredients.vue";
+import ButtomSearch from "./ButtomSearch.vue";
 import Tag from "./Tag.vue";
 export default {
   data() {
@@ -7,11 +8,15 @@ export default {
       ingredientes: [] as string[],
     };
   },
-  components: { SelectionIngredients, Tag },
+  components: { SelectionIngredients, Tag, ButtomSearch },
   methods: {
     adicionarIngrediente(ingrediente: string) {
-      console.log(this.ingredientes);
       this.ingredientes.push(ingrediente);
+    },
+    removeIngredientes(ingrediente: string) {
+      this.ingredientes = this.ingredientes.filter(
+        (iLista) => ingrediente !== iLista
+      );
     },
   },
 };
@@ -32,6 +37,10 @@ export default {
       </p>
     </section>
 
-    <SelectionIngredients @add-ingredientes="adicionarIngrediente" />
+    <SelectionIngredients
+      @addIngredientes="adicionarIngrediente"
+      @removeIngredientes="removeIngredientes"
+    />
+    <ButtomSearch />
   </main>
 </template>

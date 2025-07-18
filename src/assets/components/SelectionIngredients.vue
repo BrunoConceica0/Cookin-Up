@@ -14,7 +14,7 @@ export default {
   async created() {
     this.categorias = await getCategories();
   },
-  emits: ["add-ingredientes"],
+  emits: ["add-ingredientes", "remove-ingredientes"],
 };
 </script>
 
@@ -30,7 +30,8 @@ export default {
       <li v-for="categoria in categorias" :key="categoria.nome">
         <CardCategory
           :categoria="categoria"
-          @add-ingredientes="$emit('add-ingredientes', $event)"
+          @addIngredientes="$emit('add-ingredientes', $event)"
+          @removeIngredientes="$emit('remove-ingredientes', $event)"
         />
       </li>
     </ul>
@@ -39,5 +40,3 @@ export default {
     </p>
   </section>
 </template>
-
-<style scoped></style>

@@ -1,36 +1,36 @@
-# cookin-up
+🥗 Lista de Ingredientes
+Projeto desenvolvido com Vue.js para selecionar e gerenciar ingredientes de forma interativa. Foi criado com fins educacionais, baseado em atividades da plataforma Alura.
 
-This template should help get you started developing with Vue 3 in Vite.
+🚀 Funcionalidades
+Adicionar ingredientes à lista
 
-## Recommended IDE Setup
+Remover ingredientes individualmente
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+Exibir mensagem quando a lista está vazia
 
-## Type Support for `.vue` Imports in TS
+Componente genérico de botão de busca
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+Componente de rodapé com informações do projeto
 
-## Customize configuration
+📷 Demonstração
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+Exemplo da interface da lista de ingredientes.
 
-## Project Setup
+🛠 Tecnologias utilizadas
+Vue.js 3
 
-```sh
-npm install
-```
+TypeScript
 
-### Compile and Hot-Reload for Development
+Tailwind CSS (ou outra, se for o caso)
 
-```sh
-npm run dev
-```
+Componentização com .vue
 
-### Type-Check, Compile and Minify for Production
+🧪 Melhorias futuras
+Implementar busca com filtro de ingredientes
 
-```sh
-npm run build
-```
+Armazenar lista em localStorage
 
-##O que é o Vite?
-O Vite consegue disponibilizar um servidor local em poucos segundos, além de atualizar o navegador automaticamente quando salvamos um arquivo do projeto, melhorando bastante a experiência de desenvolvimento.
+Adicionar autenticação para salvar listas do usuário
+
+👨‍💻 Desenvolvido por
+Bruno Conceição — BrunoConceica0

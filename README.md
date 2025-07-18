@@ -12,8 +12,6 @@ Componente genérico de botão de busca
 
 Componente de rodapé com informações do projeto
 
-📷 Demonstração
-
 Exemplo da interface da lista de ingredientes.
 
 🛠 Tecnologias utilizadas

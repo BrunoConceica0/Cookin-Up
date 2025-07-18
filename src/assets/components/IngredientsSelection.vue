@@ -11,27 +11,28 @@ export default {
     text: { type: String, required: true },
   },
   methods: {
-    selectionActive() {
+    toggleSelection() {
       this.selection = !this.selection;
       if (this.selection) {
-        this.$emit("add-ingredientes", this.text);
+        this.$emit("addIngredientes", this.text);
+      } else {
+        this.$emit("removeIngredientes", this.text);
       }
     },
   },
-  $emits: ["add-ingredientes"],
+
+  $emits: ["add-ingredientes", "remove-ingredientes"],
 };
 </script>
 
 <template>
-  <!-- <button class="ingredientes" @click="selection = !selection"> -->
-  <tag
+  <button
     class="cursor-pointer"
-    :text="text"
-    :active="selection"
-    @click="selectionActive"
+    @click.prevent="toggleSelection"
     :aria-pressed="selection"
-  />
-  <!-- </button> -->
+  >
+    <tag :text="text" :active="selection" />
+  </button>
 </template>
 
 <style scoped></style>

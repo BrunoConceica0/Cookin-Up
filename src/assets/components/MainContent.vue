@@ -1,14 +1,18 @@
 <script lang="ts">
 import SelectionIngredients from "./SelectionIngredients.vue";
-import ButtomSearch from "./ButtomSearch.vue";
+import ShowRecipes from "./ShowRecipes.vue";
 import Tag from "./Tag.vue";
+
+type Pagina = "SelecionarIngredientes" | "MostrarReceitas";
+
 export default {
   data() {
     return {
       ingredientes: [] as string[],
+      content: "SelecionarIngredientes" as Pagina,
     };
   },
-  components: { SelectionIngredients, Tag, ButtomSearch },
+  components: { SelectionIngredients, Tag, ShowRecipes },
   methods: {
     adicionarIngrediente(ingrediente: string) {
       this.ingredientes.push(ingrediente);
@@ -17,6 +21,9 @@ export default {
       this.ingredientes = this.ingredientes.filter(
         (iLista) => ingrediente !== iLista
       );
+    },
+    nav(pagina: Pagina) {
+      this.content = pagina;
     },
   },
 };
@@ -38,9 +45,11 @@ export default {
     </section>
 
     <SelectionIngredients
+      v-if="content === 'SelecionarIngredientes'"
       @addIngredientes="adicionarIngrediente"
       @removeIngredientes="removeIngredientes"
+      @buscar-receitas="nav('MostrarReceitas')"
     />
-    <ButtomSearch />
+    <ShowRecipes v-else-if="content === 'MostrarReceitas'" />
   </main>
 </template>

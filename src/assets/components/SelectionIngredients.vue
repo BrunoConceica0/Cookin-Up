@@ -3,6 +3,7 @@
 import { getCategories } from "@/http/index";
 import type ICategories from "@/interfaces/ICategories";
 import CardCategory from "./CardCategory.vue";
+import ButtomSearch from "./ButtomSearch.vue";
 export default {
   data() {
     return {
@@ -10,11 +11,11 @@ export default {
       categorias: [] as ICategories[],
     };
   },
-  components: { CardCategory },
+  components: { CardCategory, ButtomSearch },
   async created() {
     this.categorias = await getCategories();
   },
-  emits: ["add-ingredientes", "remove-ingredientes"],
+  emits: ["add-ingredientes", "remove-ingredientes", "buscar-receitas"],
 };
 </script>
 
@@ -38,5 +39,6 @@ export default {
     <p class="paragrafo dica">
       *Atenção: consideramos que você tem em casa sal, pimenta e água.
     </p>
+    <ButtomSearch @click="$emit('buscar-receitas')" />
   </section>
 </template>

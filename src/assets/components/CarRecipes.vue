@@ -1,7 +1,7 @@
 <script lang="ts">
 //@ts-nocheck
-import type ICategories from "@/interfaces/ICategories";
-import Tag from "./Tag.vue";
+import type IRecipe from "@/interfaces/IRecipes";
+import type { PropType } from "vue";
 import IngredientsSelection from "./IngredientsSelection.vue";
 
 export default {
@@ -11,7 +11,7 @@ export default {
 
     receita: { type: Object as PropType<IRecipes>, required: true },
   },
-  components: { Tag, IngredientsSelection },
+  components: { IngredientsSelection },
   emits: ["add-ingredientes", "remove-ingredientes"],
 };
 </script>

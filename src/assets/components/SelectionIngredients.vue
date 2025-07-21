@@ -5,6 +5,7 @@ import type ICategories from "@/interfaces/ICategories";
 import CardCategory from "./CardCategory.vue";
 import ButtomSearch from "./ButtomSearch.vue";
 export default {
+  name: "SelectionIngredients",
   data() {
     return {
       // O tipo ICategories[] é uma interface que define a estrutura dos dados que você está esperando. Tem que usar o 'as' para definir o tipo da variável.
@@ -39,6 +40,6 @@ export default {
     <p class="paragrafo dica">
       *Atenção: consideramos que você tem em casa sal, pimenta e água.
     </p>
-    <ButtomSearch @click="$emit('buscar-receitas')" />
+    <ButtomSearch @click.prevent="$emit('buscar-receitas')" />
   </section>
 </template>

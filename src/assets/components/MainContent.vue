@@ -26,6 +26,7 @@ export default {
       this.content = pagina;
     },
   },
+  emits: ["editarReceitas"],
 };
 </script>
 
@@ -43,13 +44,18 @@ export default {
         Sua lista está vazia, selecione ingredientes para iniciar.
       </p>
     </section>
-
-    <SelectionIngredients
-      v-if="content === 'SelecionarIngredientes'"
-      @addIngredientes="adicionarIngrediente"
-      @removeIngredientes="removeIngredientes"
-      @buscar-receitas="nav('MostrarReceitas')"
-    />
-    <ShowRecipes v-else-if="content === 'MostrarReceitas'" />
+    <keep-alive include="SelectionIngredients">
+      <SelectionIngredients
+        v-if="content === 'SelecionarIngredientes'"
+        @addIngredientes="adicionarIngrediente"
+        @removeIngredientes="removeIngredientes"
+        @buscar-receitas="nav('MostrarReceitas')"
+      />
+      <ShowRecipes
+        :ingredientes="ingredientes"
+        v-else-if="content === 'MostrarReceitas'"
+        @edit-recipes="nav('SelecionarIngredientes')"
+      />
+    </keep-alive>
   </main>
 </template>
